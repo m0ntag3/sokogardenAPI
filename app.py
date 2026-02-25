@@ -130,7 +130,7 @@ def Addproducts():
     
 # Below is the route to fetch products
 @app.route("/api/get_products")
-def get_products(): # Research on how to retrieve a specific product without coming back to the query each time using a parameter.           
+def get_products():             
     # Create a connection
     connection = pymysql.connect(host="localhost",user="root",password="",database="sokogardenonline")
 
