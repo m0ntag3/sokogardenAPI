@@ -1,12 +1,15 @@
 # import flask and its components
 from flask import *
 import os
+from flask_cors import CORS
 
 # import pymysql module - Helps create a connection between python flask and mysql database
 import pymysql
 
+# CORS - Cross Origin Resource Sharing
 # Create/instanciate and flask application and give it a name
 app = Flask(__name__)
+CORS(app)
 
 # Configure the location to where your product images will be saved on your application
 app.config["UPLOAD_FOLDER"] = "static/images"
@@ -25,7 +28,7 @@ def signup():
         # print(username, email, password, phone)
 
         # establish a connection between flask/python and mysql
-        connection = pymysql.connect(host="localhost", user="root", password="", database="sokogardenonline")
+        connection = pymysql.connect(host="mysql-collinspaul.alwaysdata.net", user="collinspaul", password="modcom1234", database="collinspaul_sokogarden")
 
         # Create a cursor to execute the sql queries
         cursor = connection.cursor()
@@ -58,7 +61,7 @@ def signin():
         # print(email, password)
 
         # Create/establish a connection to the database
-        connection = pymysql.connect(host = "localhost", user = "root", password = "", database = "sokogardenonline")
+        connection = pymysql.connect(host = "mysql-collinspaul.alwaysdata.net", user = "collinspaul", password = "modcom1234", database = "collinspaul_sokogarden")
 
         # Create a cursor
         cursor = connection.cursor(pymysql.cursors.DictCursor)
@@ -109,7 +112,7 @@ def Addproducts():
         # print(product_name, product_description, product_cost, product_photo)
 
         # Establish a connection to the database
-        connection = pymysql.connect(host="localhost", user="root", password="", database="sokogardenonline")
+        connection = pymysql.connect(host="mysql-collinspaul.alwaysdata.net", user="collinspaul", password="modcom1234", database="collinspaul_sokogarden")
 
         # Create a cursor
         cursor = connection.cursor()
@@ -132,7 +135,7 @@ def Addproducts():
 @app.route("/api/get_products")
 def get_products():             
     # Create a connection
-    connection = pymysql.connect(host="localhost",user="root",password="",database="sokogardenonline")
+    connection = pymysql.connect(host="mysql-collinspaul.alwaysdata.net",user="collinspaul",password="modcom1234",database="collinspaul_sokogarden")
 
     # Create a cursor
     cursor = connection.cursor(pymysql.cursors.DictCursor)
@@ -211,16 +214,8 @@ def mpesa_payment():
         return jsonify({"message": "Please Complete Payment in Your Phone and we will deliver in minutes"})
 
 
-
-
-
-
-
-
-
-
 # Run the application
-app.run(debug=True)
+# app.run(debug=True)
 
 
 
